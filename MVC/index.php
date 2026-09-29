@@ -19,13 +19,19 @@
             include('View/Adminindex.php');
         break;    
         case 'productcreate':
-            include('View/ProductCreate.php');
+            $obj->createProduct();
 
         break;
+        case 'productview':
+            $obj->viewProducts();
+        break;     
         case 'productstore':
-             $obj->createProduct();
+             $obj->storeProduct();
 
         break;
+        case 'productdelete':
+             $obj->deleteProduct();
+        break;     
          case 'home':
             echo "Home page";
         break;    

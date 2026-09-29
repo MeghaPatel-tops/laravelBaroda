@@ -6,13 +6,31 @@ class Controller extends Model{
         // echo "Controller class creatd";
     }
 
-     public function createProduct(){
+    public function createProduct(){
+        include('View/ProductCreate.php');
+    }
+
+    public function storeProduct(){
           
           $flag=$this->insertData("products",$_REQUEST);
           if($flag){
               header("Location:http://localhost/employeeProject/MVC/index.php/productview");
 
           }
+     }
+
+     public function viewProducts(){
+        $productArray = $this->selectData('products');
+        include('View/Product.php');
+     }
+
+
+     public function deleteProduct(){
+        $pid= $_REQUEST['pid'];
+        $flag =$this->deleteData('pid',$pid,"products");
+        if($flag){
+             header("Location:http://localhost/employeeProject/MVC/index.php/productview");
+        }
      }
 }
 
