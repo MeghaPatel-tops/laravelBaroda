@@ -32,6 +32,26 @@ class Controller extends Model{
              header("Location:http://localhost/employeeProject/MVC/index.php/productview");
         }
      }
+
+     public function editProduct(){
+          $pid = $_REQUEST['pid'];
+          $singleProduct=$this->selectWhere("products","pid",$pid);
+          include('View/productEdit.php');
+     }
+
+     public function updateProduct(){
+         echo "<pre>";
+         print_r($_REQUEST);
+         $flag =$this->updateData("products",[
+            'productname'=>$_REQUEST['productname'],
+            'price'=>$_REQUEST['price'],
+            'category'=>$_REQUEST['category'],
+            'stock'=>$_REQUEST['stock']
+            ],['pid'=>$_REQUEST['pid']]);
+            if($flag){
+                     header("Location:http://localhost/employeeProject/MVC/index.php/productview");
+            }
+     }
 }
 
 

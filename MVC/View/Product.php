@@ -64,7 +64,7 @@
                                     <th>Category</th>
                                     <th>Price</th>
                                     <th>Stock</th>
-                                    <th>Status</th>
+                                    
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -82,18 +82,17 @@
                                         
                                         <?php echo $key->productname?>
                                     </td>
-                                    <td> <?php echo $key->productname?></td>
+                                     <td> <?php echo $key->category?></td>
                                     <td> <?php echo $key->price?></td>
-                                    <td> <?php echo $key->category?></td>
+                                   
                                     <td>
                                         <span class="badge bg-success">
                                             <?php echo $key->stock?>
                                         </span>
                                     </td>
                                     <td>
-                                        <button class="btn btn-sm btn-warning">
-                                            <i class="bi bi-pencil"></i>
-                                        </button>
+                                        <a href="http://localhost/employeeProject/MVC/index.php/productedit?pid=<?php echo $key->pid?>" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></a>
+                                       
                                        <form action="http://localhost/employeeProject/MVC/index.php/productdelete" method="post">
                                         <input type="hidden" name="pid" value="<?php echo $key->pid?>">
                                             <button class="btn btn-sm btn-danger">

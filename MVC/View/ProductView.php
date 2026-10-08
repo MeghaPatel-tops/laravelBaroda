@@ -103,7 +103,7 @@
                                 <th>Order ID</th>
                                 <th>Customer</th>
                                 <th>Total</th>
-                                <th>Status</th>
+                                <th>Stock</th>
                             </tr>
                         </thead>
 

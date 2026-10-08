@@ -31,9 +31,14 @@
         break;
         case 'productdelete':
              $obj->deleteProduct();
-        break;     
+        break;
+        case 'productedit':
+             $obj->editProduct();
+        break;          
          case 'home':
             echo "Home page";
+         case 'productupdate':
+            $obj->updateProduct();   
         break;    
     }
     
