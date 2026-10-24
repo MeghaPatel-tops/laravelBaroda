@@ -1,3 +1,4 @@
+let editData = null;
 function getProductData(){
         console.log("get product called");
         $.ajax({
@@ -15,6 +16,39 @@ function getProductData(){
 
         })
         
+}
+function editProduct(pid){
+   
+  
+    $.ajax({
+        url:`http://localhost/employeeProject/restapi/api/product.php/${pid}`,
+        type:"GET",
+        success:function(data){
+            console.log(data)
+            printFormData(data)
+        },
+        error:function(data){
+            console.log(error)
+        }
+    })
+}
+
+function printFormData(data){
+      
+       let pname = document.getElementById('pname');
+       let price = document.getElementById('price');
+       let description = document.getElementById('description');
+       let img1= document.getElementById('preview');
+       console.log(img1);
+       img1.setAttribute('src',data.image)
+       img1.classList.remove('d-none')
+       
+       pname.value= data.productname;
+       price.value = data.price;
+       description.value= data.descripation;
+       editData=data.pid
+       
+       
 }
 
 function deleteProduct(pid){
@@ -34,6 +68,20 @@ function deleteProduct(pid){
       })
 }
 
+function cleaup(){
+     let pname = document.getElementById('pname');
+       let price = document.getElementById('price');
+       let description = document.getElementById('description');
+       let img1= document.getElementById('preview');
+       
+       img1.classList.add('d-none')
+       
+       pname.value="";
+       price.value = "";
+       description.value= "";
+       editData=null;
+       
+}
     function printProduct(data){
         let str="";
         for(i=0;i<data.length;i++){
@@ -46,7 +94,9 @@ function deleteProduct(pid){
                                         </td>
                                         <td>${data[i].descripation}</td>
                                         <td onclick='deleteProduct(${data[i].pid})'>delete</td>
-                                        <td>Edit</td>
+                                        <td onclick='editProduct(${data[i].pid})'>
+                                           Edit
+                                        </td>
                                  </tr>
             `
         }
@@ -73,6 +123,8 @@ function deleteProduct(pid){
        formData.append('image',pimage.files[0]);
 
         console.log(formData);
+
+        if(editData==null){
         $.ajax({
             url:'http://localhost/employeeProject/restapi/api/product.php',
             type:'POST',
@@ -88,5 +140,27 @@ function deleteProduct(pid){
                 
             }
         })
+        }
+        else{
+            formData.append('_method',"PUT")
+             $.ajax({
+            url:'http://localhost/employeeProject/restapi/api/product.php/'+editData,
+            type:'POST',
+            
+            data:formData,
+            success:function(data){
+               
+                alert(data.message)
+                getProductData();
+                cleaup();
+                
+            },
+            error:function(err){
+                console.log(err);
+                
+            }
+        })
+        }
+       
        
     })

@@ -109,9 +109,9 @@ if ($method == "PUT") {
         // Get ID from URL
         $id = end($parts);
 
-        $pname = $_POST['productname'];
-        $price = $_POST['price'];
-        $descripation = $_POST['descripation'];
+        $pname = $_REQUEST['productname'];
+        $price = $_REQUEST['price'];
+        $descripation = $_REQUEST['descripation'];
 
         if (isset($_FILES['image']) && $_FILES['image']['name']) {
 

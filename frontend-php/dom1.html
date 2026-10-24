@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome to app</h1>
+    <p id="para-1">Welcome to app</p>
+    <p id="para-2">Welcome to app</p>
+    <button onclick="textColorChange()">Click</button>
+
+    <div class="box" id="box-4">box-1</div>
+    <div class="box" id="box-4">box-2</div>
+    <div class="box" id="box-4">box-3</div>
+    <div class="box" id="box-4">box-4</div>
+    <div class="box" id="box-4">box-5</div>
+
+    <script>
+        function textColorChange(){
+           
+            let p1 = document.getElementById('para-1');
+            console.log(p1);
+            p1.style.color="red"
+
+            let boxArray = document.getElementsByClassName('box');
+            console.log(boxArray);
+
+            let head = document.querySelector('h1');
+            console.log(head);
+
+            let paraArray = document.querySelectorAll('p');
+            console.log(paraArray);
+            
+            
+            
+            
+        }
+    </script>
+</body>
+</html>
